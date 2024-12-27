@@ -1,0 +1,18 @@
+list of applications that exist in the cur dir
+ibmcloud code-engine application list
+ibmcloud ce app list
+
+
+deploy a simple flask web application, which serves a REST API endpoint at the root level and returns the string "Learner's First Application" The code is provided at https://github.com/ibm-developer-skills-network/flask_server_docker
+ibmcloud ce application create --name myfirstapplication --build-source https://github.com/ibm-developer-skills-network/flask_server_docker --image us.icr.io/${SN_ICR_NAMESPACE}/myfirstapplication --registry-secret icr-secret --port 5000
+
+get app details
+ibmcloud ce app get --n myfirstapplication
+
+update the environment variables for the existing application, use –env option with the app update command. The following example updates the Learner's First Application to overwrite the value of username variable
+ibmcloud ce application update --name myfirstapplication --env username=Hamzz
+
+scale your app to have 3 instances
+  ibmcloud ce app update --name myfirstapplication --min 3
+
+  
